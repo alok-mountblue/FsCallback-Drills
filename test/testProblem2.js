@@ -1,3 +1,3 @@
-const problem2 = require("../problem2");
+const { solve2 } = require("../problem2");
 let path = "../Data/lipsum.txt";
-problem2(path);
+solve2(path);

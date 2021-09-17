@@ -1,39 +1,41 @@
 const fs = require("fs");
 
-const problem2 = (path) => {
-  fs.readFile(path, "utf8", (err, data) => {
+const solve2 = (path) => {
+  fs.readFile(path, "utf8", (err, res) => {
     if (err) console.log(err);
-    // let upperCaseData = data.toUpperCase();
-    fs.writeFile("upperCase.txt", data.toUpperCase(), (err) => {
-      if (err) console.log("error", err);
+    fs.writeFile("upperCase.txt", res.toUpperCase(), (err) => {
+      if (err) console.log(err);
       fs.writeFile("filenames.txt", "upperCase.txt", (err) => {
-        if (err) console.log("error", err);
-      });
-      fs.readFile("upperCase.txt", "utf8", (err, data) => {
         if (err) console.log(err);
-        let lowerCaseData = data.toLowerCase().split(". ").join("\n");
-        fs.writeFile("lowerCase.txt", lowerCaseData, (err) => {
+      });
+      fs.readFile("upperCase.txt", "utf8", (err, res) => {
+        if (err) console.log(err);
+        let lowerCase = res.toLowerCase().split(". ").join("\n");
+        fs.writeFile("lowerCase.txt", lowerCase, (err) => {
           if (err) console.log(err);
           fs.appendFile("filenames.txt", " lowerCase.txt", (err) => {
             if (err) console.log(err);
           });
-          fs.readFile("lowerCase.txt", "utf8", (err, data) => {
+          fs.readFile("lowerCase.txt", "utf8", (err, res) => {
             if (err) console.log(err);
-            let sortedData = data.split("\n").sort().join("\n");
-            fs.writeFile("sorted.txt", sortedData, (err) => {
-              if (err) console.log("error", err);
+            let sortData = res.split("\n").sort().join("\n");
+            fs.writeFile("sorted.txt", sortData, (err) => {
+              if (err) console.log(err);
               fs.appendFile("filenames.txt", " sorted.txt", (err) => {
-                if (err) console.log("error", err);
+                if (err) console.log(err);
               });
 
-              fs.readFile("filenames.txt", "utf8", (err, data) => {
-                if (err) console.log("error", err);
-                let listOfNames = data.split(" ");
-                listOfNames.forEach((element) => {
-                  fs.unlink(element, (err) => {
-                    if (err) console.log("error", err);
+              fs.readFile("filenames.txt", "utf8", (err, res) => {
+                if (err) console.log(err);
+                //console.log(res);
+                let namesList = res.split(" "); //return array
+                //console.log(namesList);
+                for (let i = 0; i < namesList.length; i++) {
+                  fs.unlink(namesList[i], (err) => {
+                    //console.log(namesList[i]);
+                    if (err) console.log(err);
                   });
-                });
+                }
               });
             });
           });
@@ -43,4 +45,4 @@ const problem2 = (path) => {
   });
 };
 
-module.exports = problem2;
+module.exports = { solve2 };
