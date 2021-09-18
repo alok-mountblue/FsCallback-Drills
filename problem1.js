@@ -7,7 +7,7 @@ function solve1(callback) {
       if (err) {
         console.log(err);
       } else {
-        console.log("New directory successfully created.");
+        console.log("directory created");
       }
     },
     callback
