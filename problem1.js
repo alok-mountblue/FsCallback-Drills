@@ -3,7 +3,7 @@ const fs = require("fs");
 function solve1(callback) {
   fs.mkdir(
     "../dir",
-    function (err) {
+    (err) => {
       if (err) {
         console.log(err);
       } else {
