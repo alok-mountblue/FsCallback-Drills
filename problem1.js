@@ -1,22 +1,12 @@
 const fs = require("fs");
 
-function createDir() {
+function solve1(callback) {
   fs.mkdir("../dir", (err) => {
     if (err) {
       console.log(err);
     }
   });
-}
-
-function solve1(callback) {
-  return new Promise((resolve, reject) => {
-    createDir();
-    if (fs.existsSync("../dir")) {
-      resolve(callback);
-    } else {
-      reject("dir not found");
-    }
-  });
+  callback;
 }
 
 module.exports = { solve1 };

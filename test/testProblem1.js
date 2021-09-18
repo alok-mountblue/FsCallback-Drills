@@ -9,18 +9,25 @@ const files = [
   "file5.json",
 ];
 
+function writeDir(i) {
+  fs.writeFile(
+    `../dir/files${i}.json`,
+    "Hello Json you will be die soon",
+    (err) => {
+      if (err) throw err;
+    }
+  );
+}
+function deleteDir(i) {
+  fs.unlink(`../dir/files${i}.json`, (err) => {
+    if (err) throw err;
+  });
+}
+
 function callback() {
   for (let i = 1; i <= files.length; i += 1) {
-    fs.writeFile(
-      `../dir/files${i}.json`,
-      "Hello Json you will be die soon",
-      (err) => {
-        if (err) throw err;
-      }
-    );
-    fs.unlink(`../dir/files${i}.json`, (err) => {
-      if (err) throw err;
-    });
+    writeDir(i);
+    deleteDir(i);
   }
 }
 solve1(callback);
