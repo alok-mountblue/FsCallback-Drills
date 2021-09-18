@@ -5,7 +5,7 @@ const solve2 = (path) => {
     if (err) console.log(err);
     fs.writeFile("upperCase.txt", res.toUpperCase(), (err) => {
       if (err) console.log(err);
-      fs.writeFile("filenames.txt", "upperCase.txt", (err) => {
+      fs.writeFile("filenames.txt", "upperCase.txt ", (err) => {
         if (err) console.log(err);
       });
       fs.readFile("upperCase.txt", "utf8", (err, res) => {
@@ -13,7 +13,7 @@ const solve2 = (path) => {
         let lowerCase = res.toLowerCase().split(". ").join("\n");
         fs.writeFile("lowerCase.txt", lowerCase, (err) => {
           if (err) console.log(err);
-          fs.appendFile("filenames.txt", " lowerCase.txt", (err) => {
+          fs.appendFile("filenames.txt", "lowerCase.txt ", (err) => {
             if (err) console.log(err);
           });
           fs.readFile("lowerCase.txt", "utf8", (err, res) => {
@@ -21,7 +21,7 @@ const solve2 = (path) => {
             let sortData = res.split("\n").sort().join("\n");
             fs.writeFile("sorted.txt", sortData, (err) => {
               if (err) console.log(err);
-              fs.appendFile("filenames.txt", " sorted.txt", (err) => {
+              fs.appendFile("filenames.txt", "sorted.txt", (err) => {
                 if (err) console.log(err);
               });
 
